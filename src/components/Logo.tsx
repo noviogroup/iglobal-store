@@ -10,7 +10,7 @@ interface LogoProps {
 
 const variantClassNames: Record<NonNullable<LogoProps["variant"]>, string> = {
   full: "h-28 w-28 sm:h-36 sm:w-36",
-  header: "h-14 w-14 sm:h-16 sm:w-16",
+  header: "h-[58px] w-[124px]",
   icon: "h-10 w-10",
 };
 

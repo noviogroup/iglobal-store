@@ -19,7 +19,7 @@ export default function ContactPage() {
                 href="tel:242-462-7499"
                 className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
               >
-                <Phone className="w-6 h-6 text-[#00ABC9] mb-3" />
+                <Phone className="w-6 h-6 text-[#00A9CE] mb-3" />
                 <h2 className="font-semibold text-lg mb-1">Phone</h2>
                 <p className="text-gray-600">242-462-7499</p>
               </a>
@@ -27,12 +27,12 @@ export default function ContactPage() {
                 href="mailto:iglobalps@hotmail.com"
                 className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
               >
-                <Mail className="w-6 h-6 text-[#00ABC9] mb-3" />
+                <Mail className="w-6 h-6 text-[#00A9CE] mb-3" />
                 <h2 className="font-semibold text-lg mb-1">Email</h2>
                 <p className="text-gray-600">iglobalps@hotmail.com</p>
               </a>
               <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                <MapPin className="w-6 h-6 text-[#FCD116] mb-3" />
+                <MapPin className="w-6 h-6 text-[#FDDA25] mb-3" />
                 <h2 className="font-semibold text-lg mb-1">Location</h2>
                 <p className="text-gray-600">Serving customers across The Bahamas</p>
               </div>

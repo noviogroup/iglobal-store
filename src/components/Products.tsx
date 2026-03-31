@@ -36,7 +36,7 @@ export default function Products() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <Badge className="bg-[#00ABC9]/10 text-[#00ABC9] border-0 px-4 py-2 mb-6">
+          <Badge className="bg-[#00A9CE]/10 text-[#00A9CE] border-0 px-4 py-2 mb-6">
             Shop Our Collection
           </Badge>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
@@ -64,7 +64,7 @@ export default function Products() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent" />
 
                 {/* Badge */}
-                <Badge className="absolute top-3 left-3 bg-[#FCD116] text-black border-0 shadow-lg font-semibold">
+                <Badge className="absolute top-3 left-3 bg-[#FDDA25] text-black border-0 shadow-lg font-semibold">
                   {product.badge}
                 </Badge>
 
@@ -74,7 +74,7 @@ export default function Products() {
                     asChild
                     size="icon"
                     variant="secondary"
-                    className="w-10 h-10 rounded-full shadow-lg bg-white hover:bg-[#00ABC9] hover:text-white"
+                    className="w-10 h-10 rounded-full shadow-lg bg-white hover:bg-[#00A9CE] hover:text-white"
                   >
                     <Link href={`/products/${product.slug}`} aria-label={`View ${product.name}`}>
                       <Eye className="w-4 h-4" />
@@ -82,7 +82,7 @@ export default function Products() {
                   </Button>
                   <CheckoutButton
                     productSlug={product.slug}
-                    className="w-10 h-10 rounded-full shadow-lg bg-[#00ABC9] hover:bg-[#008da6] p-0"
+                    className="w-10 h-10 rounded-full shadow-lg bg-[#00A9CE] hover:bg-black p-0"
                   >
                     <ShoppingCart className="w-4 h-4" />
                   </CheckoutButton>
@@ -94,7 +94,7 @@ export default function Products() {
                 </span>
 
                 {/* Title */}
-                <h3 className="font-bold text-xl mt-2 mb-1 text-white group-hover:text-[#FCD116] transition-colors line-clamp-2">
+                <h3 className="font-bold text-xl mt-2 mb-1 text-white group-hover:text-[#FDDA25] transition-colors line-clamp-2">
                   <Link href={`/products/${product.slug}`}>{product.name}</Link>
                 </h3>
 
@@ -106,7 +106,7 @@ export default function Products() {
                 {/* Rating */}
                 <div className="flex items-center gap-1 mb-3">
                   {[...Array(product.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#FCD116] text-[#FCD116]" />
+                    <Star key={i} className="w-4 h-4 fill-[#FDDA25] text-[#FDDA25]" />
                   ))}
                   <span className="text-sm text-white/80 ml-2">(5.0)</span>
                 </div>
@@ -114,12 +114,12 @@ export default function Products() {
                 {/* Price & Action */}
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-2xl font-bold text-[#FCD116]">${product.price}</span>
+                    <span className="text-2xl font-bold text-[#FDDA25]">${product.price}</span>
                     <span className="text-sm text-white/80">.00</span>
                   </div>
                   <CheckoutButton
                     productSlug={product.slug}
-                    className="shadow-md bg-[#00ABC9] hover:bg-[#008da6]"
+                    className="shadow-md bg-[#00A9CE] hover:bg-black"
                   >
                     Checkout
                     <ShoppingCart className="w-4 h-4 ml-2" />
@@ -140,7 +140,7 @@ export default function Products() {
             asChild
             variant="outline"
             size="lg"
-            className="border-2 border-[#00ABC9] text-[#00ABC9] hover:bg-[#00ABC9] hover:text-white"
+            className="border-2 border-[#00A9CE] text-[#00A9CE] hover:bg-[#00A9CE] hover:text-white"
           >
             <Link href="/products">View All Products</Link>
           </Button>

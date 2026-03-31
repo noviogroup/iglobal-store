@@ -1,7 +1,5 @@
 "use client";
 
-import { TrendingUp, Package } from "lucide-react";
-
 interface HeroProps {
   bannerSrc?: string | null;
 }
@@ -19,14 +17,14 @@ export default function Hero({ bannerSrc }: HeroProps) {
     <section
       id="home"
       style={sectionStyle}
-      className="relative min-h-[85vh] flex items-center pt-20 overflow-hidden bg-gradient-to-br from-white via-[#00ABC9]/5 to-white"
+      className="relative min-h-[85vh] flex items-center pt-28 md:pt-32 overflow-hidden bg-gradient-to-br from-white via-[#00A9CE]/5 to-white"
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="grid lg:grid-cols-1 gap-8 items-center">
           {/* Left Content */}
           <div className="space-y-6 z-10">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-[#FCD116] text-black px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+            <div className="inline-flex items-center gap-2 bg-[#FDDA25] text-black px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
               Welcome to iGlobal
             </div>
 
@@ -38,7 +36,7 @@ export default function Hero({ bannerSrc }: HeroProps) {
               >
                 <span className="block text-white">Products</span>
                 <span className="block text-white">that makes</span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00ABC9] via-[#00d4ff] to-[#00ABC9] animate-shimmer">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00A9CE] via-[#00A9CE] to-[#00A9CE] animate-shimmer">
                   your life better
                 </span>
               </h1>
@@ -51,32 +49,6 @@ export default function Hero({ bannerSrc }: HeroProps) {
               </p>
             </div>
 
-          </div>
-
-          {/* Right Side - Floating Cards */}
-          <div className="relative lg:h-[500px] hidden lg:flex items-center justify-center">
-            <div className="absolute top-0 left-0 z-30 bg-white px-6 py-4 rounded-2xl shadow-xl border border-gray-100 hidden lg:block animate-float">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#00ABC9]/10 rounded-xl flex items-center justify-center">
-                  <TrendingUp className="w-6 h-6 text-[#00ABC9]" />
-                </div>
-                <div>
-                  <div className="font-bold text-xs">Best Seller</div>
-                  <div className="text-[10px] text-gray-500">Top rated</div>
-                </div>
-              </div>
-            </div>
-            <div className="absolute bottom-12 right-0 z-30 bg-white px-6 py-4 rounded-2xl shadow-xl border border-gray-100 hidden lg:block animate-float-delayed">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#FCD116]/10 rounded-xl flex items-center justify-center">
-                  <Package className="w-6 h-6 text-[#FCD116]" />
-                </div>
-                <div>
-                  <div className="font-bold text-xs">Fast Delivery</div>
-                  <div className="text-[10px] text-gray-500">Bahamas wide</div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

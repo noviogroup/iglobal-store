@@ -31,7 +31,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <main className="pt-24 min-h-screen bg-gradient-to-b from-white to-gray-50">
         <section className="py-14">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Button asChild variant="ghost" className="mb-8 text-[#00ABC9] hover:text-[#008da6]">
+            <Button asChild variant="ghost" className="mb-8 text-[#00A9CE] hover:text-black">
               <Link href="/products">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Products
@@ -45,20 +45,20 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   alt={product.name}
                   className="w-full max-h-[520px] object-contain"
                 />
-                <Badge className="absolute top-5 left-5 bg-[#FCD116] text-black border-0 shadow font-semibold">
+                <Badge className="absolute top-5 left-5 bg-[#FDDA25] text-black border-0 shadow font-semibold">
                   {product.badge}
                 </Badge>
               </div>
 
               <div>
-                <p className="text-sm font-semibold text-[#00ABC9] uppercase tracking-wider mb-3">
+                <p className="text-sm font-semibold text-[#00A9CE] uppercase tracking-wider mb-3">
                   {product.category}
                 </p>
                 <h1 className="text-4xl sm:text-5xl font-bold mb-4">{product.name}</h1>
 
                 <div className="flex items-center gap-1 mb-6">
                   {[...Array(product.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-[#FCD116] text-[#FCD116]" />
+                    <Star key={i} className="w-5 h-5 fill-[#FDDA25] text-[#FDDA25]" />
                   ))}
                   <span className="text-gray-500 ml-2">(5.0)</span>
                 </div>
@@ -70,7 +70,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   <ul className="space-y-2 text-gray-700">
                     {product.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2">
-                        <span className="mt-2 h-2 w-2 rounded-full bg-[#00ABC9]" />
+                        <span className="mt-2 h-2 w-2 rounded-full bg-[#00A9CE]" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -81,12 +81,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
                 <p className="text-sm text-gray-500">
                   Need help? Call{" "}
-                  <a className="text-[#00ABC9] hover:underline" href="tel:242-462-7499">
+                  <a className="text-[#00A9CE] hover:underline" href="tel:242-462-7499">
                     242-462-7499
                   </a>{" "}
                   or email{" "}
                   <a
-                    className="text-[#00ABC9] hover:underline"
+                    className="text-[#00A9CE] hover:underline"
                     href="mailto:iglobalps@hotmail.com"
                   >
                     iglobalps@hotmail.com

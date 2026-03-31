@@ -46,7 +46,7 @@ export default function ProductPurchasePanel({ productSlug, price }: ProductPurc
 
       <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
         <div>
-          <span className="text-4xl font-bold text-[#00ABC9]">${subtotal}</span>
+          <span className="text-4xl font-bold text-[#00A9CE]">${subtotal}</span>
           <span className="text-sm text-gray-500">.00 total</span>
         </div>
 
@@ -54,7 +54,7 @@ export default function ProductPurchasePanel({ productSlug, price }: ProductPurc
           <CheckoutButton
             productSlug={productSlug}
             quantity={quantity}
-            className="bg-[#00ABC9] hover:bg-[#008da6] text-white px-8"
+            className="bg-[#00A9CE] hover:bg-black text-white px-8"
           >
             Checkout Securely
           </CheckoutButton>

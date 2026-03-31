@@ -8,7 +8,7 @@ export default function CTA() {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background - Bahamas Aqua */}
-      <div className="absolute inset-0 bg-[#00ABC9]" />
+      <div className="absolute inset-0 bg-[#00A9CE]" />
 
       {/* Pattern Overlay */}
       <div className="absolute inset-0 opacity-10">
@@ -19,7 +19,7 @@ export default function CTA() {
 
       {/* Decorative blobs */}
       <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#FCD116]/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#FDDA25]/20 rounded-full blur-3xl" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
@@ -33,7 +33,7 @@ export default function CTA() {
           <Button
             asChild
             size="lg"
-            className="bg-[#FCD116] text-black hover:bg-[#FCD116]/90 shadow-xl shadow-black/20 group font-semibold"
+            className="bg-[#FDDA25] text-black hover:bg-[#FDDA25]/90 shadow-xl shadow-black/20 group font-semibold"
           >
             <Link href="/products">
               Start Shopping
@@ -44,7 +44,7 @@ export default function CTA() {
             asChild
             variant="outline"
             size="lg"
-            className="border-2 border-white text-white hover:bg-white hover:text-[#00ABC9]"
+            className="border-2 border-white text-white hover:bg-white hover:text-[#00A9CE]"
           >
             <Link href="/contact">Contact Us</Link>
           </Button>

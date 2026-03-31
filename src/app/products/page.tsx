@@ -23,7 +23,7 @@ export default async function ProductsPage() {
         <section className="py-14">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-12">
-              <Badge className="bg-[#00ABC9]/10 text-[#00ABC9] border-0 px-4 py-2 mb-5">
+              <Badge className="bg-[#00A9CE]/10 text-[#00A9CE] border-0 px-4 py-2 mb-5">
                 iGlobal Store
               </Badge>
               <h1 className="text-4xl sm:text-5xl font-bold mb-5">
@@ -43,7 +43,7 @@ export default async function ProductsPage() {
                       alt={product.name}
                       className="absolute inset-0 h-full w-full object-contain p-8"
                     />
-                    <Badge className="absolute top-4 left-4 bg-[#FCD116] text-black border-0 shadow font-semibold">
+                    <Badge className="absolute top-4 left-4 bg-[#FDDA25] text-black border-0 shadow font-semibold">
                       {product.badge}
                     </Badge>
                   </div>
@@ -57,13 +57,13 @@ export default async function ProductsPage() {
 
                     <div className="flex items-center gap-1 mb-5">
                       {[...Array(product.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#FCD116] text-[#FCD116]" />
+                        <Star key={i} className="w-4 h-4 fill-[#FDDA25] text-[#FDDA25]" />
                       ))}
                     </div>
 
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <span className="text-3xl font-bold text-[#00ABC9]">${product.price}</span>
+                        <span className="text-3xl font-bold text-[#00A9CE]">${product.price}</span>
                         <span className="text-sm text-gray-500">.00</span>
                       </div>
                       <div className="flex items-center gap-2">
@@ -72,7 +72,7 @@ export default async function ProductsPage() {
                         </Button>
                         <CheckoutButton
                           productSlug={product.slug}
-                          className="bg-[#00ABC9] hover:bg-[#008da6]"
+                          className="bg-[#00A9CE] hover:bg-black"
                         >
                           Checkout
                         </CheckoutButton>

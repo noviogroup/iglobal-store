@@ -58,13 +58,13 @@ function PromoCard({ tile }: { tile: PromoTile }) {
 
       <div className="relative z-10 flex h-full flex-col justify-between p-5 sm:p-6 text-white">
         <div>
-          <Badge className="bg-[#FCD116] text-black border-0 shadow-sm">{tile.badge}</Badge>
+          <Badge className="bg-[#FDDA25] text-black border-0 shadow-sm">{tile.badge}</Badge>
           <h3 className="mt-3 max-w-sm text-xl sm:text-2xl font-bold leading-tight">{tile.title}</h3>
           <p className="mt-2 max-w-md text-sm text-white/80 line-clamp-2">{tile.subtitle}</p>
         </div>
 
         <div className="flex items-center justify-between gap-3">
-          <div className="text-xl font-bold text-[#FCD116]">${tile.price}.00</div>
+          <div className="text-xl font-bold text-[#FDDA25]">${tile.price}.00</div>
           <Link
             href={tile.href}
             className="inline-flex w-fit items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-white"
@@ -106,12 +106,12 @@ export default function PromoTiles() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <Badge className="bg-[#00ABC9]/10 text-[#00ABC9] border-0 px-4 py-2 mb-3">Featured Products</Badge>
+            <Badge className="bg-[#00A9CE]/10 text-[#00A9CE] border-0 px-4 py-2 mb-3">Featured Products</Badge>
             <h2 className="text-3xl sm:text-4xl font-bold">
               Shop <span className="text-gradient">Trending Picks</span>
             </h2>
           </div>
-          <Button asChild variant="outline" className="w-fit border-[#00ABC9] text-[#00ABC9] hover:bg-[#00ABC9] hover:text-white">
+          <Button asChild variant="outline" className="w-fit border-[#00A9CE] text-[#00A9CE] hover:bg-[#00A9CE] hover:text-white">
             <Link href="/products">View all deals</Link>
           </Button>
         </div>
