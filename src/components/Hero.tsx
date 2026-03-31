@@ -6,10 +6,15 @@ import { ArrowRight, Sparkles, TrendingUp, Package } from "lucide-react";
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-[85vh] flex items-center pt-20 overflow-hidden bg-gradient-to-br from-white via-[#00ABC9]/5 to-white">
-      {/* Background Elements */}
+      {/* Animated Background Pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00ABC9_1px,transparent_1px),linear-gradient(to_bottom,#00ABC9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] animate-grid-flow" />
+      </div>
+
+      {/* Floating Orbs */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 -right-64 w-[600px] h-[600px] bg-[#00ABC9]/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 -left-64 w-[500px] h-[500px] bg-[#FCD116]/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 -right-64 w-[600px] h-[600px] bg-[#00ABC9]/10 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute bottom-1/4 -left-64 w-[500px] h-[500px] bg-[#FCD116]/10 rounded-full blur-3xl animate-float-slow-delayed" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
@@ -17,7 +22,7 @@ export default function Hero() {
           {/* Left Content */}
           <div className="space-y-6 z-10">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-[#FCD116] text-black px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+            <div className="inline-flex items-center gap-2 bg-[#FCD116] text-black px-4 py-2 rounded-full text-sm font-semibold shadow-lg animate-bounce-subtle">
               <Sparkles className="w-4 h-4" />
               Welcome to iGlobal
             </div>
@@ -72,52 +77,64 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Side - Product Showcase */}
+          {/* Right Side - Product Gallery */}
           <div className="relative lg:h-[500px] flex items-center justify-center">
-            {/* Main Product Card */}
-            <div className="relative z-20 bg-white rounded-3xl p-6 shadow-2xl border border-gray-100 transform lg:translate-x-12">
+            {/* Main Product Card - Mop */}
+            <div className="relative z-20 bg-white rounded-3xl p-6 shadow-2xl border border-gray-100 transform lg:translate-x-8">
               <img
                 src="/images/mop.png"
                 alt="IG Wonder Self-Wringing Mop"
-                className="w-full max-w-[350px] h-auto object-contain"
+                className="w-full max-w-[300px] h-auto object-contain"
               />
 
               {/* Floating Price Badge */}
-              <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-[#FCD116] to-[#FFE566] text-black px-8 py-4 rounded-2xl shadow-2xl shadow-[#FCD116]/40 transform rotate-3">
-                <div className="text-sm font-medium opacity-80">Starting at</div>
-                <div className="text-3xl font-bold">$25</div>
+              <div className="absolute -bottom-4 -right-4 bg-gradient-to-br from-[#FCD116] to-[#FFE566] text-black px-6 py-3 rounded-2xl shadow-2xl shadow-[#FCD116]/40 transform rotate-3 animate-pulse-subtle">
+                <div className="text-xs font-medium opacity-80">From</div>
+                <div className="text-2xl font-bold">$25</div>
               </div>
             </div>
 
-            {/* Floating Feature Card 1 - Top Left */}
-            <div className="absolute top-0 left-0 z-30 bg-white px-6 py-4 rounded-2xl shadow-xl border border-gray-100 hidden lg:block animate-float">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#00ABC9]/10 rounded-xl flex items-center justify-center">
-                  <TrendingUp className="w-6 h-6 text-[#00ABC9]" />
+            {/* Secondary Product Card - Phone Mount (smaller, behind) */}
+            <div className="absolute z-10 top-8 -left-4 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 transform -rotate-6 hover:rotate-0 transition-transform duration-300 hidden lg:block">
+              <img
+                src="/images/phone-mount.jpeg"
+                alt="Phone Mount"
+                className="w-32 h-32 object-contain"
+              />
+              <div className="absolute -top-2 -right-2 bg-[#FCD116] text-black px-3 py-1 rounded-full text-xs font-bold">
+                $30
+              </div>
+            </div>
+
+            {/* Floating Feature Card 1 - Best Seller */}
+            <div className="absolute top-0 right-0 z-30 bg-white px-4 py-3 rounded-xl shadow-xl border border-gray-100 hidden lg:block animate-float">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 bg-[#00ABC9]/10 rounded-lg flex items-center justify-center">
+                  <TrendingUp className="w-5 h-5 text-[#00ABC9]" />
                 </div>
                 <div>
-                  <div className="font-bold text-sm">Best Seller</div>
-                  <div className="text-xs text-gray-500">Top rated product</div>
+                  <div className="font-bold text-xs">Best Seller</div>
+                  <div className="text-[10px] text-gray-500">Top rated</div>
                 </div>
               </div>
             </div>
 
-            {/* Floating Feature Card 2 - Bottom Right */}
-            <div className="absolute bottom-12 right-0 z-30 bg-white px-6 py-4 rounded-2xl shadow-xl border border-gray-100 hidden lg:block animate-float-delayed">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#FCD116]/10 rounded-xl flex items-center justify-center">
-                  <Package className="w-6 h-6 text-[#FCD116]" />
+            {/* Floating Feature Card 2 - Fast Delivery */}
+            <div className="absolute bottom-8 right-4 z-30 bg-white px-4 py-3 rounded-xl shadow-xl border border-gray-100 hidden lg:block animate-float-delayed">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 bg-[#FCD116]/10 rounded-lg flex items-center justify-center">
+                  <Package className="w-5 h-5 text-[#FCD116]" />
                 </div>
                 <div>
-                  <div className="font-bold text-sm">Fast Delivery</div>
-                  <div className="text-xs text-gray-500">Across Bahamas</div>
+                  <div className="font-bold text-xs">Fast Delivery</div>
+                  <div className="text-[10px] text-gray-500">Bahamas wide</div>
                 </div>
               </div>
             </div>
 
             {/* Decorative Elements */}
-            <div className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-[#FCD116] to-[#FFE566] rounded-full opacity-50 blur-2xl" />
-            <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-gradient-to-br from-[#00ABC9] to-[#00d4ff] rounded-full opacity-40 blur-2xl" />
+            <div className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-[#FCD116] to-[#FFE566] rounded-full opacity-50 blur-2xl animate-pulse" />
+            <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-gradient-to-br from-[#00ABC9] to-[#00d4ff] rounded-full opacity-40 blur-2xl animate-pulse" />
           </div>
         </div>
       </div>
