@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
-import { products } from "@/lib/products";
+import { getAllProducts } from "@/lib/products";
 import CheckoutButton from "@/components/CheckoutButton";
 
 export const metadata: Metadata = {
@@ -14,7 +14,8 @@ export const metadata: Metadata = {
   description: "Browse the latest iGlobal products and shop quality essentials in The Bahamas.",
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const products = await getAllProducts();
   return (
     <>
       <Header />
@@ -52,7 +53,7 @@ export default function ProductsPage() {
                       {product.category}
                     </p>
                     <h2 className="text-2xl font-bold mt-2 mb-2">{product.name}</h2>
-                    <p className="text-gray-600 mb-4">{product.shortDescription}</p>
+                    <p className="text-gray-600 mb-4">{product.short_description}</p>
 
                     <div className="flex items-center gap-1 mb-5">
                       {[...Array(product.rating)].map((_, i) => (

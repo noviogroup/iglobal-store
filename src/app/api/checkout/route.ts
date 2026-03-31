@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing product slug." }, { status: 400 });
     }
 
-    const product = getProductBySlug(body.productSlug);
+    const product = await getProductBySlug(body.productSlug);
     if (!product) {
       return NextResponse.json({ error: "Product not found." }, { status: 404 });
     }
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
             unit_amount: Math.round(product.price * 100),
             product_data: {
               name: product.name,
-              description: product.shortDescription,
+              description: product.short_description,
               images: [product.image],
               metadata: {
                 slug: product.slug,

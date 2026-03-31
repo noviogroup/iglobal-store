@@ -4,7 +4,8 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { products } from "@/lib/products";
+import { getAllProducts, type Product } from "@/lib/products";
+import { useEffect, useState } from "react";
 
 type PromoTile = {
   key: string;
@@ -18,28 +19,30 @@ type PromoTile = {
   className: string;
 };
 
-const promoTiles: PromoTile[] = products.slice(0, 4).map((product, index) => {
-  const tileClassName =
-    index === 0
-      ? "lg:col-span-7 lg:row-span-2 min-h-[360px] lg:min-h-[500px]"
-      : index === 1
-        ? "lg:col-span-5 min-h-[240px]"
-        : index === 2
-          ? "lg:col-span-3 min-h-[230px]"
-          : "lg:col-span-2 min-h-[230px]";
+function createPromoTiles(products: Product[]): PromoTile[] {
+  return products.slice(0, 4).map((product, index) => {
+    const tileClassName =
+      index === 0
+        ? "lg:col-span-7 lg:row-span-2 min-h-[360px] lg:min-h-[500px]"
+        : index === 1
+          ? "lg:col-span-5 min-h-[240px]"
+          : index === 2
+            ? "lg:col-span-3 min-h-[230px]"
+            : "lg:col-span-2 min-h-[230px]";
 
-  return {
-    key: product.slug,
-    title: product.name,
-    subtitle: product.shortDescription,
-    cta: "Shop now",
-    href: `/products/${product.slug}`,
-    image: product.image,
-    price: product.price,
-    badge: product.badge,
-    className: tileClassName,
-  };
-});
+    return {
+      key: product.slug,
+      title: product.name,
+      subtitle: product.short_description,
+      cta: "Shop now",
+      href: `/products/${product.slug}`,
+      image: product.image,
+      price: product.price,
+      badge: product.badge || "",
+      className: tileClassName,
+    };
+  });
+}
 
 function PromoCard({ tile }: { tile: PromoTile }) {
   return (
@@ -76,6 +79,28 @@ function PromoCard({ tile }: { tile: PromoTile }) {
 }
 
 export default function PromoTiles() {
+  const [promoTiles, setPromoTiles] = useState<PromoTile[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadPromoTiles() {
+      const products = await getAllProducts();
+      setPromoTiles(createPromoTiles(products));
+      setLoading(false);
+    }
+    loadPromoTiles();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-600">Loading featured products...</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

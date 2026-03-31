@@ -5,20 +5,21 @@ import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Star, ArrowLeft } from "lucide-react";
-import { getProductBySlug, products } from "@/lib/products";
+import { getProductBySlug, getAllProducts } from "@/lib/products";
 import ProductPurchasePanel from "@/components/ProductPurchasePanel";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const products = await getAllProducts();
   return products.map((product) => ({ slug: product.slug }));
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
 
   if (!product) {
     notFound();

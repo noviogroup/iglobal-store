@@ -5,10 +5,32 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Star, Eye } from "lucide-react";
 import Link from "next/link";
-import { products } from "@/lib/products";
+import { getAllProducts, type Product } from "@/lib/products";
 import CheckoutButton from "@/components/CheckoutButton";
+import { useEffect, useState } from "react";
 
 export default function Products() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadProducts() {
+      const data = await getAllProducts();
+      setProducts(data);
+      setLoading(false);
+    }
+    loadProducts();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="products" className="relative -mt-[15px] z-20 py-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-600">Loading products...</p>
+        </div>
+      </section>
+    );
+  }
   return (
     <section id="products" className="relative -mt-[15px] z-20 py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,7 +100,7 @@ export default function Products() {
 
                 {/* Description */}
                 <p className="text-white/85 text-sm mb-3 line-clamp-2">
-                  {product.shortDescription}
+                  {product.short_description}
                 </p>
 
                 {/* Rating */}
