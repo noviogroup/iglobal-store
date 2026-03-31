@@ -5,31 +5,25 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ShoppingCart, User } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#products", label: "Products" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/products", label: "Products" },
+  { href: "/#about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="flex flex-col">
-              <span className="text-4xl font-bold italic text-[#003D7A]" style={{ fontFamily: 'Georgia, serif' }}>
-                iG
-              </span>
-              <span className="text-[9px] font-semibold tracking-widest text-[#00ABC9] uppercase -mt-1">
-                Products & Services
-              </span>
-            </div>
+          <Link href="/" className="flex items-center group">
+            <Logo variant="header" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -38,7 +32,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-gray-700 hover:text-[#00ABC9] transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00ABC9] after:transition-all after:duration-300 hover:after:w-full"
+                className="text-base font-semibold text-gray-700 hover:text-[#00ABC9] transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00ABC9] after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.label}
               </Link>
@@ -71,14 +65,16 @@ export default function Header() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="text-lg font-medium py-2 hover:text-[#00ABC9] transition-colors"
+                        className="text-xl font-semibold py-2 hover:text-[#00ABC9] transition-colors"
                         onClick={() => setIsOpen(false)}
                       >
                         {link.label}
                       </Link>
                     ))}
                   </nav>
-                  <Button className="mt-4 w-full bg-[#00ABC9] hover:bg-[#008da6]">Shop Now</Button>
+                  <Button asChild className="mt-4 w-full bg-[#00ABC9] hover:bg-[#008da6]">
+                    <Link href="/products">Shop Now</Link>
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>

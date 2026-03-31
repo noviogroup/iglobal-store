@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin } from "lucide-react";
+import Link from "next/link";
 
 export default function CTA() {
   return (
@@ -30,18 +31,22 @@ export default function CTA() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <Button
+            asChild
             size="lg"
             className="bg-[#FCD116] text-black hover:bg-[#FCD116]/90 shadow-xl shadow-black/20 group font-semibold"
           >
-            Start Shopping
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <Link href="/products">
+              Start Shopping
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </Button>
           <Button
+            asChild
             variant="outline"
             size="lg"
             className="border-2 border-white text-white hover:bg-white hover:text-[#00ABC9]"
           >
-            Contact Us
+            <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
 

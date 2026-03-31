@@ -73,21 +73,6 @@ export default function Features() {
           ))}
         </div>
 
-        {/* Stats */}
-        <div className="grid sm:grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto">
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">500+</div>
-            <p className="text-gray-600">Happy Customers</p>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient-gold mb-2">100%</div>
-            <p className="text-gray-600">Quality Products</p>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">5.0</div>
-            <p className="text-gray-600">Average Rating</p>
-          </div>
-        </div>
       </div>
     </section>
   );

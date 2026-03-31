@@ -1,39 +1,19 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Star, Eye } from "lucide-react";
-
-const products = [
-  {
-    id: 1,
-    name: "IG Wonder Self-Wringing Mop",
-    description: "Revolutionary self-wringing design for effortless cleaning. No bucket needed!",
-    price: 25,
-    rating: 5,
-    image: "/images/mop.png",
-    badge: "Best Seller",
-    category: "Cleaning",
-  },
-  {
-    id: 2,
-    name: "Premium Zinc Alloy Magnetic Phone Mount",
-    description: "N52 MagSafe compatible with powerful vacuum suction. Perfect for any car.",
-    price: 30,
-    rating: 5,
-    image: "/images/phone-mount.jpeg",
-    badge: "Premium",
-    category: "Auto",
-  },
-];
+import Link from "next/link";
+import { products } from "@/lib/products";
+import CheckoutButton from "@/components/CheckoutButton";
 
 export default function Products() {
   return (
-    <section id="products" className="py-24 bg-gradient-to-b from-white to-gray-50">
+    <section id="products" className="relative -mt-[15px] z-20 py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <Badge className="bg-[#00ABC9]/10 text-[#00ABC9] border-0 px-4 py-2 mb-6">
             Shop Our Collection
           </Badge>
@@ -46,83 +26,101 @@ export default function Products() {
         </div>
 
         {/* Products Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {products.map((product) => (
             <Card
               key={product.id}
-              className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white"
+              className="group relative overflow-hidden rounded-3xl border-0 shadow-md hover:shadow-xl transition-all duration-500 bg-white p-0"
             >
-              {/* Image Container */}
-              <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+              {/* Image + Overlay Content */}
+              <div className="relative h-[400px] sm:h-[430px] overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="absolute inset-0 w-full h-full object-contain p-8 group-hover:scale-105 transition-transform duration-500"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent" />
 
                 {/* Badge */}
-                <Badge className="absolute top-4 left-4 bg-[#FCD116] text-black border-0 shadow-lg font-semibold">
+                <Badge className="absolute top-3 left-3 bg-[#FCD116] text-black border-0 shadow-lg font-semibold">
                   {product.badge}
                 </Badge>
 
                 {/* Quick Actions */}
-                <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300">
-                  <Button size="icon" variant="secondary" className="w-10 h-10 rounded-full shadow-lg bg-white hover:bg-[#00ABC9] hover:text-white">
-                    <Eye className="w-4 h-4" />
+                <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300">
+                  <Button
+                    asChild
+                    size="icon"
+                    variant="secondary"
+                    className="w-10 h-10 rounded-full shadow-lg bg-white hover:bg-[#00ABC9] hover:text-white"
+                  >
+                    <Link href={`/products/${product.slug}`} aria-label={`View ${product.name}`}>
+                      <Eye className="w-4 h-4" />
+                    </Link>
                   </Button>
-                  <Button size="icon" className="w-10 h-10 rounded-full shadow-lg bg-[#00ABC9] hover:bg-[#008da6]">
+                  <CheckoutButton
+                    productSlug={product.slug}
+                    className="w-10 h-10 rounded-full shadow-lg bg-[#00ABC9] hover:bg-[#008da6] p-0"
+                  >
                     <ShoppingCart className="w-4 h-4" />
-                  </Button>
+                  </CheckoutButton>
                 </div>
-              </div>
-
-              <CardContent className="p-6">
+                <div className="absolute bottom-0 left-0 right-0 p-4">
                 {/* Category */}
-                <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <span className="text-xs font-medium text-white/80 uppercase tracking-wider">
                   {product.category}
                 </span>
 
                 {/* Title */}
-                <h3 className="font-bold text-xl mt-2 mb-2 group-hover:text-[#00ABC9] transition-colors line-clamp-2">
-                  {product.name}
+                <h3 className="font-bold text-xl mt-2 mb-1 text-white group-hover:text-[#FCD116] transition-colors line-clamp-2">
+                  <Link href={`/products/${product.slug}`}>{product.name}</Link>
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                  {product.description}
+                <p className="text-white/85 text-sm mb-3 line-clamp-2">
+                  {product.shortDescription}
                 </p>
 
                 {/* Rating */}
-                <div className="flex items-center gap-1 mb-4">
+                <div className="flex items-center gap-1 mb-3">
                   {[...Array(product.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-[#FCD116] text-[#FCD116]" />
                   ))}
-                  <span className="text-sm text-gray-500 ml-2">(5.0)</span>
+                  <span className="text-sm text-white/80 ml-2">(5.0)</span>
                 </div>
 
                 {/* Price & Action */}
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-2xl font-bold text-[#00ABC9]">${product.price}</span>
-                    <span className="text-sm text-gray-500">.00</span>
+                    <span className="text-2xl font-bold text-[#FCD116]">${product.price}</span>
+                    <span className="text-sm text-white/80">.00</span>
                   </div>
-                  <Button className="shadow-lg bg-[#00ABC9] hover:bg-[#008da6]">
-                    Add to Cart
+                  <CheckoutButton
+                    productSlug={product.slug}
+                    className="shadow-md bg-[#00ABC9] hover:bg-[#008da6]"
+                  >
+                    Checkout
                     <ShoppingCart className="w-4 h-4 ml-2" />
-                  </Button>
+                  </CheckoutButton>
                 </div>
-              </CardContent>
+                </div>
+              </div>
             </Card>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-10">
           <p className="text-gray-600 mb-4">
             Browse our wide selection of everyday essentials designed to make your life easier.
           </p>
-          <Button variant="outline" size="lg" className="border-2 border-[#00ABC9] text-[#00ABC9] hover:bg-[#00ABC9] hover:text-white">
-            View All Products
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="border-2 border-[#00ABC9] text-[#00ABC9] hover:bg-[#00ABC9] hover:text-white"
+          >
+            <Link href="/products">View All Products</Link>
           </Button>
         </div>
       </div>

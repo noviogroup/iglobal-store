@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# iGlobal Store
 
-## Getting Started
+iGlobal Store is a Next.js storefront for iGlobal Products and Services, focused on product discovery and secure Stripe checkout.
 
-First, run the development server:
+## Features
+
+- Homepage with branded hero, featured products, trust section, and conversion CTA
+- Product catalog at `/products`
+- Product detail pages at `/products/[slug]`
+- Stripe checkout flow:
+  - `POST /api/checkout`
+  - Success page at `/checkout/success`
+  - Cancel page at `/checkout/cancel`
+- Support, contact, privacy policy, and terms pages
+
+## Tech Stack
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS + shadcn/ui
+- Stripe (server-side checkout session creation)
+
+## Local Development
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create `.env.local`:
+
+```bash
+STRIPE_SECRET_KEY=sk_test_xxx
+```
+
+3. Start development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Checkout Notes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Checkout sessions are created in `src/app/api/checkout/route.ts`.
+- Product data currently comes from `src/lib/products.ts`.
+- The code is prepared to switch product/order data to your database layer.
 
-## Learn More
+## Database Plan
 
-To learn more about Next.js, take a look at the following resources:
+Database design and migration guidance is in:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `docs/database-plan.md`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Your dev team can implement the schema and replace the in-memory product source with DB queries while keeping frontend contracts unchanged.

@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -H 0.0.0.0 --turbopack",
+    "dev": "next dev -H 0.0.0.0",
+    "dev:turbo": "next dev -H 0.0.0.0 --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "bunx tsc --noEmit && next lint",
@@ -20,6 +21,7 @@
     "react-dom": "^18.3.1",
     "react-grab": "latest",
     "same-runtime": "^0.0.1",
+    "stripe": "^21.0.1",
     "tailwind-merge": "^3.3.0",
     "tailwindcss-animate": "^1.0.7"
   },
