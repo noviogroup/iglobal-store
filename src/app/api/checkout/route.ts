@@ -47,6 +47,12 @@ export async function POST(request: NextRequest) {
           },
         },
       ],
+      shipping_address_collection: {
+        allowed_countries: ["BS", "US", "CA"],
+      },
+      phone_number_collection: {
+        enabled: true,
+      },
       metadata: {
         productSlug: product.slug,
         quantity: String(quantity),

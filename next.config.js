@@ -38,6 +38,15 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'npm:stripe@17.7.0': false,
+      'npm:@supabase/supabase-js@2.49.1': false,
+    };
+    config.externals = [...(config.externals || []), /^npm:.*$/];
+    return config;
+  },
 };
 
 module.exports = nextConfig;
